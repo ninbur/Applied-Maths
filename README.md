@@ -1,2 +1,2 @@
 # AppliedMathsfirstdegree
-Projects of short tasks for IT in first year of applied mathematics
+Projects and short tasks for IT on first degree of Applied Mathematics
