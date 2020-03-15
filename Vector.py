@@ -40,42 +40,55 @@ class Vector():
 
     def scalar(self, alpha):
         """Zwraca wartość wektor pomnozony przez skalar podany w argumencie"""
-        import random
         newvector=[]
+        a =len(self.vect)
         for i in self.vect:
             newelement= i*alpha
             newvector.append(newelement)
-        return newvector
-
-    def sumanddiference(self, other):
-        """Suma i Różnica dwóch  wylosowanych wektorów tej samej długości"""
-        finalsum =[]
-        finaldiference = []
-        fir= self.vect
-        sec = other.vect
+        scalarvector = Vector(a)
+        scalarvector.elementsoflist(newvector)
+        return scalarvector
+        
+    def __add__(self, other):
+        """Suma dwóch wektorów"""
         if self.d == other.d:
-            for i in range(len(fir)):
-                sumoftwo = fir[i] + sec[i]
-                diferenceoftwo = fir[i] - sec [i]
-                finaldiference.append(diferenceoftwo)
-                finalsum.append(sumoftwo)
-            return finalsum, finaldiference
+            a = self.d
+            listforadding =[]
+            for i in range(self.d):
+                coordinate = self.vect[i] + other.vect[i]
+                listforadding.append(coordinate)
+            vector = Vector(a)
+            vector.elementsoflist(listforadding)
+            return vector
         else:
-            return ValueError
+            raise ValueError ('Różne rozmiary wektorów')
+
+    def __sub__(self, other):
+        """Róznica dwóch wektorów"""
+        if self.d == other.d:
+            a = self.d
+            listfordifference =[]
+            for i in range(self.d):
+                coordinate = self.vect[i] - other.vect[i]
+                listfordifference.append(coordinate)
+            vector = Vector(a)
+            vector.elementsoflist(listfordifference)
+            return vector
+        else:
+            raise ValueError ('Różne rozmiary wektorów')
+
+
 
     def __str__(self):
         """Zwraca wektor jako string"""
-        return str(self.vect), type(str(self.vect))
+        return str(self.vect)
 
     def scalarproduct(self, other):
         """Produkt skalarny dwóch wektorów"""
         if self.d == other.d:
-            sub_1 = self.vect
-            sub_2 = other.vect
-            print(sub_1, sub_2)
             scpr = 0
             for i in range(self.d):
-                scpr_n = sub_1[i] * sub_2[i]
+                scpr_n = self.vect[i] * other.vect[i]
                 scpr += scpr_n
             return scpr
 
@@ -102,8 +115,9 @@ def main():
     print(v_1.sumelements())
     print(v_1.lenght())
     print(v_1.scalar(3))
-    print(v_1.sumanddiference((v_2)))
-    print(v_1.__str__())
+    print(v_1 + v_2)
+    print(v_1 - v_2)
+    print(v_1)
     print(v_1.scalarproduct(v_2))
     print(v_2.ifbelongs(3))
     print(v_2.gottoelement(1))
