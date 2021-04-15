@@ -33,7 +33,6 @@ v.grid(row=1, column=1)
 
 #funckja
 def myClick():
-    # POPRAWIONE - bład wykakuje w GUI
     #EXEPTY dla sytuacji, kiedy użykownik nie podał odpowiediego argumentu i nie wybrał walut
     try:
         zmienna = currency_converter(eval(e.get()), var.get(), variable.get()).pln_to()
